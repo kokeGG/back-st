@@ -17,9 +17,10 @@ conectarDB();
 
 app.use( express.json() );
 
-app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/users', require('./routes/usuarios'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/devices', require('./routes/devices'));
+app.use(require('./routes/assignments'));
 
 
 const port = process.env.PORT || 4000;

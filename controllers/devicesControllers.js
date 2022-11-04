@@ -52,6 +52,14 @@ exports.updateDevice = async (req, res) => {
     }
 }
 
-exports.deleteDevice = (req, res) => {
-    
+exports.deleteDevice = async (req, res) => {
+    try {
+        await db.query("call deleteDevice(?)", {
+            replacements: [req.params.id],
+            type: QueryTypes.DELETE
+        });
+        return res.status(204);
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
 }
