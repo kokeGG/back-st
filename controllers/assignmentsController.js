@@ -5,10 +5,17 @@ const db = require("../config/db");
 const { QueryTypes } = require("sequelize");
 
 exports.createAssignment = async (req, res) => {
-  assignment = await new Assignment(req.body);
+  const{
+    idUser,
+    idDevice,
+    manager,
+  } = req.body;
 
   try {
-    await assignment.save();
+    await db.query("call addAssignment(?, ?, ?)", {
+      replacements: [idUser, idDevice, manager],
+      type: QueryTypes.INSERT,
+    });
     res.json({ msg: "Assignment created" });
   } catch (error) {
     console.log(error);
