@@ -64,6 +64,21 @@ exports.getAssignment = async (req, res) => {
   }
 };
 
+exports.getAssignmentUser = async (req, res) => {
+  try {
+    const [result] = await db.query(
+      "SELECT * FROM Assignments WHERE idUser = ?",
+      {
+        replacements: [req.params.id],
+        type: QueryTypes.SELECT
+      }
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({message: error.message});
+  }
+}
+
 exports.updateAssignment = async (req, res) => {
     try {
         await Assignment.update(req.body, {
