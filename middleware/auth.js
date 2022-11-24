@@ -9,6 +9,7 @@ module.exports = (req, res, next) => {
 
         try {
             const usuario = jwt.verify(token, process.env.DATABASE_PASSWORD);
+            console.log(usuario);
             req.usuario = usuario;
         } catch (error) {
             console.log(error);

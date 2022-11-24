@@ -27,6 +27,7 @@ exports.autenticarUsuario = async (req, res, next) => {
       {
         id: usuario.idUser,
         username: usuario.username,
+        rol: usuario.rol
       },
       process.env.DATABASE_PASSWORD,
       {
