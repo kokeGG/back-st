@@ -20,8 +20,6 @@ exports.autenticarUsuario = async (req, res, next) => {
     return next();
   }
 
-
-
   if (bcrypt.compareSync(password, usuario.password)) {
     const token = jwt.sign(
       {
