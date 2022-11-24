@@ -19,19 +19,20 @@ exports.autenticarUsuario = async (req, res, next) => {
     res.status(401).json({ msg: "El usuario no existe" });
     return next();
   }
-    const salt = await bcrypt.genSalt(10);
-    usuario.password = await bcrypt.hash(password, salt);
+
+
 
   if (bcrypt.compareSync(password, usuario.password)) {
     const token = jwt.sign(
       {
         id: usuario.idUser,
         username: usuario.username,
-        rol: usuario.rol
+        rol: usuario.rol,
+        pass: usuario.password
       },
       process.env.DATABASE_PASSWORD,
       {
-        expiresIn: "8h",
+        expiresIn: "1h",
       }
     );
     res.json({ token });
