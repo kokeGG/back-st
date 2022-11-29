@@ -11,7 +11,7 @@ router.get("/api/assignments/:id", assignmentController.getAssignment);
 
 router.get("/api/assignments-no-devices", assignmentController.getAssignmentsWithoutDevice);
 
-router.get("/api/assignmentUser/:id", assignmentController.getAssignmentUser);
+router.get("/api/assignmentsUser/:id", assignmentController.getAssignmentsUser);
 
 router.put("/api/assignments/:id", assignmentController.updateAssignment);
 

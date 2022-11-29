@@ -64,13 +64,12 @@ exports.getAssignment = async (req, res) => {
   }
 };
 
-exports.getAssignmentUser = async (req, res) => {
+exports.getAssignmentsUser = async (req, res) => {
   try {
     const [result] = await db.query(
       "SELECT * FROM Assignments WHERE idUser = ?",
       {
-        replacements: [req.params.id],
-        type: QueryTypes.SELECT
+        replacements: [req.params.id]
       }
     );
     res.json(result);
